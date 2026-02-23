@@ -24,12 +24,10 @@ Yeni kullanıcı oluşturma işlemlerinin yapıldığı ekran.
 Film ve dizilerin listelendiği, filtreleme yapılan ana ekran.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/45be6a61-e67c-444a-83d2-22893ac0247d" width="48%" alt="Ana Sayfa - Listeleme 1" />
- 
+  <img src="https://github.com/user-attachments/assets/45be6a61-e67c-444a-83d2-22893ac0247d" width="900" alt="Ana Sayfa - Listeleme 1" />
 </p>
 <p align="center">
-
-  <img src="https://github.com/user-attachments/assets/072ed43f-2680-47ed-8b97-364bcdf14e9e" width="48%" alt="Ana Sayfa - Listeleme 2" />
+  <img src="https://github.com/user-attachments/assets/072ed43f-2680-47ed-8b97-364bcdf14e9e" width="900" alt="Ana Sayfa - Listeleme 2" />
 </p>
 
 ---
@@ -56,8 +54,10 @@ Seçilen kategoriye ait film/dizi içeriklerinin listelendiği ekran.
 Film bilgileri, yorum/puan ve varsa ilgili içerik önerileri.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/62ce30c1-454f-456f-a937-18d51f39b131" width="48%" alt="Film Detay Sayfası 1" />
-  <img src="https://github.com/user-attachments/assets/08855428-47b3-4b46-a5f0-e96f3d5ba6d0" width="48%" alt="Film Detay Sayfası 2" />
+  <img src="https://github.com/user-attachments/assets/62ce30c1-454f-456f-a937-18d51f39b131" width="900" alt="Film Detay Sayfası 1" />
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/08855428-47b3-4b46-a5f0-e96f3d5ba6d0" width="900" alt="Film Detay Sayfası 2" />
 </p>
 
 ---
@@ -66,12 +66,16 @@ Film bilgileri, yorum/puan ve varsa ilgili içerik önerileri.
 Dizi bilgileri, bölüm/sezon ilerleme ve devam etme işlemleri.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/7ff1ac5d-3e9f-4d7b-a729-a04e536e6007" width="48%" alt="Dizi Detay Sayfası 1" />
-  <img src="https://github.com/user-attachments/assets/9307489c-ae53-4f5b-8866-48020d32e5da" width="48%" alt="Dizi Detay Sayfası 2" />
+  <img src="https://github.com/user-attachments/assets/7ff1ac5d-3e9f-4d7b-a729-a04e536e6007" width="900" alt="Dizi Detay Sayfası 1" />
 </p>
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/29390753-8c82-4e54-ad51-78d0e2e5f8ad" width="48%" alt="Dizi Detay Sayfası 3" />
-  <img src="https://github.com/user-attachments/assets/0ffabbab-f213-4343-aa36-6cce7f1d8d3e" width="48%" alt="Dizi Detay Sayfası 4" />
+  <img src="https://github.com/user-attachments/assets/9307489c-ae53-4f5b-8866-48020d32e5da" width="900" alt="Dizi Detay Sayfası 2" />
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/29390753-8c82-4e54-ad51-78d0e2e5f8ad" width="900" alt="Dizi Detay Sayfası 3" />
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/0ffabbab-f213-4343-aa36-6cce7f1d8d3e" width="900" alt="Dizi Detay Sayfası 4" />
 </p>
 
 ---
@@ -89,8 +93,10 @@ Geçmişte izlenen içeriklerin listelenmesi ve yönetimi (tekli/toplu silme, de
 Film ekleme, listeleme, güncelleme, silme ve filtreleme işlemleri.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/010c32b3-734f-4c53-92ce-9718dda8e281" width="48%" alt="Admin Film Takibi 1" />
-  <img src="https://github.com/user-attachments/assets/a2d6ef62-a22f-455a-addd-fe7f8e32ffec" width="48%" alt="Admin Film Takibi 2" />
+  <img src="https://github.com/user-attachments/assets/010c32b3-734f-4c53-92ce-9718dda8e281" width="900" alt="Admin Film Takibi 1" />
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a2d6ef62-a22f-455a-addd-fe7f8e32ffec" width="900" alt="Admin Film Takibi 2" />
 </p>
 <p align="center">
   <img src="https://github.com/user-attachments/assets/b696d361-02ce-453a-ad5b-b8c766df6f07" width="900" alt="Admin Film Takibi 3" />
@@ -102,8 +108,10 @@ Film ekleme, listeleme, güncelleme, silme ve filtreleme işlemleri.
 Dizi yönetimi işlemleri (ekle / güncelle / sil).
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/8f78b6ca-d0fa-4896-9233-af811028d330" width="48%" alt="Admin Dizi Takibi 1" />
-  <img src="https://github.com/user-attachments/assets/489a94f4-da91-43da-91ea-47ac5c8f9448" width="48%" alt="Admin Dizi Takibi 2" />
+  <img src="https://github.com/user-attachments/assets/8f78b6ca-d0fa-4896-9233-af811028d330" width="900" alt="Admin Dizi Takibi 1" />
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/489a94f4-da91-43da-91ea-47ac5c8f9448" width="900" alt="Admin Dizi Takibi 2" />
 </p>
 
 ---
