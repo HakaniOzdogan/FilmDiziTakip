@@ -25,6 +25,10 @@ Film ve dizilerin listelendiği, filtreleme yapılan ana ekran.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/45be6a61-e67c-444a-83d2-22893ac0247d" width="48%" alt="Ana Sayfa - Listeleme 1" />
+ 
+</p>
+<p align="center">
+
   <img src="https://github.com/user-attachments/assets/072ed43f-2680-47ed-8b97-364bcdf14e9e" width="48%" alt="Ana Sayfa - Listeleme 2" />
 </p>
 
