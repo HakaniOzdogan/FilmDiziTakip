@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmDiziTakip.KategoriDetayPage"
+             Title="Kategori Detayı"
+             BackgroundColor="#FFF8E7">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Hesaptan Çıkış Yap" Priority="0" Order="Primary" Clicked="CikisYap"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="20" RowSpacing="15">
+
+        <!-- Başlık -->
+        <Label x:Name="kategoriAdiLabel"
+               Grid.Row="0"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="#2C3E50"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+               Margin="0,10,0,0"/>
+
+        <!-- Film/Dizi Listesi - Grid düzeniyle yan yana görünüm -->
+        <CollectionView x:Name="filmListGor"
+                        Grid.Row="1"
+                        SelectionMode="Single"
+                        SelectionChanged="IcerikSecildi"
+                        ItemsLayout="VerticalGrid, 5">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="5" Spacing="8" HorizontalOptions="Center">
+                        <Image Source="{Binding ImageUrl}"
+                               Aspect="AspectFill"
+                               HeightRequest="200"
+                               WidthRequest="140"
+                               BackgroundColor="LightGray"
+                               HorizontalOptions="Center" />
+                        <Label Text="{Binding Ad}"
+                               FontSize="14"
+                               TextColor="#2C3E50"
+                               HorizontalTextAlignment="Center"
+                               LineBreakMode="WordWrap"
+                               MaxLines="2"
+                               HeightRequest="35"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Geri Dön Butonu -->
+        <Button Text="↩ Geri Dön"
+                x:Name="cikisBtn"
+                Grid.Row="5"
+                Clicked="GeriDon"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                BackgroundColor="#2C3E50"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="10"
+                Padding="10,5"/>
+    </Grid>
+
+</ContentPage>

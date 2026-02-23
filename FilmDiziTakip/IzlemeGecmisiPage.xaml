@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmDiziTakip.IzlemeGecmisiPage"
+             Title="İzleme Geçmişi"
+             BackgroundColor="#FFF8E7">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Hesaptan Çıkış Yap" Priority="0" Order="Primary" Clicked="CikisYap"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Başlık -->
+            <Label Text="📜 İzleme Geçmişiniz"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   TextColor="#2C3E50"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center" />
+
+            <Label
+                    Text="İzlenen Filmler"
+                    FontSize="25"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"/>
+
+
+
+
+            <!-- Geçmişte İzlenen Film/Dizi Listesi -->
+            <CollectionView x:Name="izlemeGecmisiListView"
+                            ItemsSource="{Binding Izlenenler}"
+                            SelectionChanged="SecimYapildi"
+                            SelectionMode="Single"
+                            HeightRequest="250"
+                            HorizontalScrollBarVisibility="Always">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid WidthRequest="140">
+                            <!-- X Butonu -->
+                            <ImageButton Source="D:\Users\HakanIslam\Desktop\proje\FilmDiziTakip\Resources\Images\x.png"
+                         BackgroundColor="Transparent"
+                         HorizontalOptions="End"
+                         VerticalOptions="Start"
+                         Padding="5"
+                         HeightRequest="30"
+                         WidthRequest="30"
+                         CommandParameter="{Binding .}"
+                         Clicked="TekilSilTiklandi"
+                         ZIndex="2" />
+
+                            <!-- Kart İçeriği -->
+                            <StackLayout Margin="5"
+                         WidthRequest="140"
+                         HorizontalOptions="Center">
+                                <!-- Görsel -->
+                                <Frame HasShadow="True"
+                       CornerRadius="10"
+                       Padding="0"
+                       HeightRequest="180"
+                       WidthRequest="140"
+                       BackgroundColor="LightGray">
+                                    <Image Source="{Binding ImageUrl}"
+                           Aspect="AspectFill"
+                           HeightRequest="180"
+                           WidthRequest="140" />
+                                </Frame>
+
+                                <!-- Ad -->
+                                <Label Text="{Binding Ad}"
+                       FontSize="14"
+                       HorizontalTextAlignment="Center"
+                       TextColor="#2C3E50"
+                       LineBreakMode="TailTruncation"
+                       MaxLines="2"
+                       Margin="0,5,0,0" />
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+
+
+
+            <Label
+                Text="İzlenen Diziler"
+                FontSize="25"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"/>
+
+            <CollectionView x:Name="DiziIzlemeGecmisiListView"
+                ItemsSource="{Binding IzlenenDiziler}" 
+                                    SelectionMode="Single"
+                                    SelectionChanged="IzlemeGecmisiListView_SelectionChanged"
+                                    HeightRequest="300"
+                                    HorizontalScrollBarVisibility="Always">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid WidthRequest="140" HeightRequest="250"
+                              RowDefinitions="Auto,*">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="IzlemeGecmisiListView_SelectionChanged" CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+                            <!-- Görsel (Üst kısım) -->
+                            <AbsoluteLayout HeightRequest="180" WidthRequest="140" Grid.Row="0">
+                                <Image Source="{Binding AfisUrl}"
+                                       Aspect="AspectFill"
+                                       AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                       AbsoluteLayout.LayoutFlags="All"
+                                       HeightRequest="180"
+                                       WidthRequest="140" />
+
+                                <ImageButton Source="x.png"
+                             BackgroundColor="Transparent"
+                             AbsoluteLayout.LayoutBounds="1,0,30,30"
+                             AbsoluteLayout.LayoutFlags="PositionProportional"
+                             CommandParameter="{Binding .}"
+                             Clicked="TekilSilTiklandiDizi"
+                             ZIndex="10" />
+                            </AbsoluteLayout>
+
+                            <!-- Metinler (Alt kısım) -->
+                            <StackLayout Grid.Row="1" Spacing="2" Padding="0,5,0,0">
+                                <Label Text="{Binding DiziAdi}"
+                                       FontSize="15"
+                                       TextColor="#2C3E50"
+                                       HorizontalTextAlignment="Center"
+                                       LineBreakMode="TailTruncation"
+                                       MaxLines="1" />
+
+                                <Label Text="{Binding SezonNo, StringFormat='Sezon {0}'}"
+                                       FontSize="14"
+                                       TextColor="Gray"
+                                       HorizontalTextAlignment="Center" />
+
+                                <Label Text="{Binding BolumNo, StringFormat='Bölüm {0}'}"
+                                       FontSize="14"
+                                       TextColor="Gray"
+                                       HorizontalTextAlignment="Center" />
+                                <Label Text="{Binding KalanSureFormatted}"
+                                       FontSize="14"
+                                       TextColor="Gray"
+                                       HorizontalTextAlignment="Center" />
+
+
+
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+
+
+
+
+
+            <!-- Tümünü Sil Butonu -->
+            <Button Text="🗑 Tüm Geçmişi Sil"
+                    Clicked="TumGecmisiSil"
+                    BackgroundColor="DarkRed"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    Padding="10,5"
+                    HorizontalOptions="Center"
+                    WidthRequest="200" />
+
+            <!-- Geri Dön -->
+            <Button Text="↩ Geri Dön"
+                    Clicked="GeriDon"
+                    BackgroundColor="#2C3E50"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    Padding="10,5"
+                    HorizontalOptions="Center"
+                    WidthRequest="150" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

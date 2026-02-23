@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmDiziTakip.UyeOlPage"
+             Title="Üye Olma Sayfası"
+             BackgroundColor="#FFF8E7">
+
+    <VerticalStackLayout
+        Padding="30"
+        Spacing="15">
+
+        <Label 
+            Text="Üye Olmak için boşlukları doldurunuz."
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontAttributes="Bold"
+            TextColor="#001F54"
+            FontSize="16" />
+
+        <Entry
+            x:Name="entryKullaniciAdi"
+            Placeholder="Kullanıcı adı oluşturunuz."
+            BackgroundColor="White"
+            TextColor="Black"
+            HeightRequest="45"/>
+
+        <Entry
+            x:Name="entrySifre"
+            Placeholder="Şifre oluşturunuz."
+            BackgroundColor="White"
+            TextColor="Black"
+            IsPassword="True"
+            HeightRequest="45"/>
+
+        <Button
+            x:Name="btnUyeOl"
+            Text="Kaydet"
+            Clicked="btnUyeOl_Clicked"
+            BackgroundColor="#001F54"
+            TextColor="White"
+            HeightRequest="45" />
+
+        <Button
+            x:Name="btnGeriDon"
+            Text="Anasayfaya Geri Dön"
+            Clicked="GeriDon"
+            BackgroundColor="#001F54"
+            TextColor="White"
+            HeightRequest="45" />
+
+    </VerticalStackLayout>
+</ContentPage>

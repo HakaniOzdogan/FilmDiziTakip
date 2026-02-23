@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmDiziTakip.FilmTakibiPage"
+             Title="Film Takibi"
+             BackgroundColor="#FFF8E7">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Form Alanları -->
+            <Label Text="Film Adı" FontAttributes="Bold" TextColor="#001F54" FontSize="16"/>
+            <Entry x:Name="txtAd" Placeholder="Film adı giriniz" BackgroundColor="White" TextColor="Black" HeightRequest="45"/>
+
+            <Label Text="Açıklama" FontAttributes="Bold" TextColor="#001F54" FontSize="16"/>
+            <Editor x:Name="txtAciklama" Placeholder="Film açıklaması giriniz" AutoSize="TextChanges" BackgroundColor="White" TextColor="Black" HeightRequest="80"/>
+
+            <Label Text="Yönetmen" FontAttributes="Bold" TextColor="#001F54" FontSize="16"/>
+            <Entry x:Name="txtYonetmen" Placeholder="Yönetmen giriniz" BackgroundColor="White" TextColor="Black" HeightRequest="45"/>
+
+            <Label Text="Yayın Tarihi" FontAttributes="Bold" TextColor="#001F54" FontSize="16"/>
+            <DatePicker x:Name="dateYayınTarihi" BackgroundColor="White" TextColor="#001F54" HeightRequest="45"/>
+
+            <Label Text="Çıkış Tarihi" FontAttributes="Bold" TextColor="#001F54" FontSize="16"/>
+            <DatePicker x:Name="dateCikisTarihi" BackgroundColor="White" TextColor="#001F54" HeightRequest="45"/>
+
+            <Label Text="Kategori" FontAttributes="Bold" TextColor="#001F54" FontSize="16"/>
+            <Picker x:Name="kategoriPicker"  ItemDisplayBinding="{Binding Ad}" BackgroundColor="White" TextColor="Black" HeightRequest="45"/>
+
+            <Label Text="Görsel URL" FontAttributes="Bold" TextColor="#001F54" FontSize="16"/>
+            <Entry x:Name="txtImageUrl" Placeholder="Görsel URL'si giriniz" BackgroundColor="White" TextColor="Black" HeightRequest="45"/>
+
+            <Label Text="Video URL" FontAttributes="Bold" TextColor="#001F54" FontSize="16"/>
+            <Entry x:Name="txtVideoUrl" Placeholder="Video URL'si giriniz" BackgroundColor="White" TextColor="Black" HeightRequest="45"/>
+
+            <Button Text="Filmi İzle" Clicked="IzleButton_Clicked" BackgroundColor="#001F54" TextColor="White" HeightRequest="45"/>
+
+            <!-- Butonlar -->
+            <HorizontalStackLayout Spacing="15">
+                <Button Text="Film Ekle" Clicked="BtnFilmEkle_Clicked" BackgroundColor="#001F54" TextColor="White" WidthRequest="120"/>
+                <Button Text="Film Güncelle" Clicked="BtnFilmGuncelle_Clicked" BackgroundColor="#001F54" TextColor="White" WidthRequest="120"/>
+                <Button Text="Temizle" Clicked="BtnFilmTemizle_Clicked" BackgroundColor="#001F54" TextColor="White" WidthRequest="100"/>
+                <Button x:Name="btnYorumlariGoster" Text="Yorumları Göster"  Clicked="BtnYorumlariGoster_Clicked" BackgroundColor="#001F54" TextColor="White" WidthRequest="150" />
+
+            </HorizontalStackLayout>
+
+            <!-- Yorum Başlık -->
+            <Frame x:Name="yorumBaslikFrame"
+                   BackgroundColor="#2C3E50"
+                   CornerRadius="12"
+                   Padding="12"
+                   IsVisible="False"
+                   HasShadow="True"
+                   Margin="0,20,0,0">
+                <Label Text="Yorumlar"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center" />
+            </Frame>
+
+            <!-- Yorumlar Listesi -->
+            <CollectionView x:Name="yorumListView"
+                            IsVisible="False"
+                            HeightRequest="400"
+                            SelectionMode="None"
+                            Margin="0,0,0,20">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="White"
+                               CornerRadius="12"
+                               Padding="10"
+                               Margin="5"
+                               BorderColor="#2C3E50"
+                               HasShadow="True">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <StackLayout>
+                                    <Label Text="{Binding KullaniciAd}"
+                                           FontAttributes="Bold"
+                                           FontSize="14"
+                                           TextColor="#2C3E50" />
+                                    <Label Text="{Binding YorumMetni}"
+                                           FontSize="13"
+                                           TextColor="Black" />
+                                    <Label Text="{Binding Tarih, StringFormat='Tarih: {0:dd.MM.yyyy HH:mm}'}"
+                                           FontSize="11"
+                                           TextColor="Gray" />
+                                </StackLayout>
+
+                                <ImageButton Source="x.png"
+                                             WidthRequest="24"
+                                             HeightRequest="24"
+                                             BackgroundColor="Transparent"
+                                             CommandParameter="{Binding .}"
+                                             Clicked="YorumSil_Clicked"
+                                             Grid.Column="1" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Film Listesi Başlık -->
+            <Label Text="Filmler"
+       FontAttributes="Bold"
+       FontSize="20"
+       TextColor="#001F54"
+       Margin="0,20,0,10"/>
+
+            <!-- Film Listesi -->
+            <CollectionView x:Name="filmListesiView"
+                SelectionMode="Single"
+                SelectionChanged="filmListesiView_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="#001F54"
+                   Padding="10"
+                   Margin="0,5"
+                   HasShadow="True"
+                   BackgroundColor="White">
+                            <Grid ColumnDefinitions="Auto,*,Auto"
+                      ColumnSpacing="10">
+
+                                <!-- Sol: Film Görseli -->
+                                <Image Source="{Binding ImageUrl}"
+                           WidthRequest="80"
+                           HeightRequest="120"
+                           Aspect="AspectFill"
+                           Grid.Column="0" />
+
+                                <!-- Orta: Film Bilgileri -->
+                                <VerticalStackLayout Grid.Column="1"
+                                         Spacing="5"
+                                         VerticalOptions="Center">
+                                    <Label Text="{Binding Ad}"
+                               FontAttributes="Bold"
+                               FontSize="16"
+                               TextColor="#001F54"/>
+                                    <Label Text="{Binding Yonetmen}"
+                               FontSize="13"
+                               TextColor="Gray"/>
+                                    <Label Text="{Binding KategoriAd}"
+                               FontSize="13"
+                               TextColor="DarkGray"/>
+                                    <Label Text="{Binding Aciklama}"
+                               FontSize="12"
+                               TextColor="Black"
+                               LineBreakMode="TailTruncation"
+                               MaxLines="2"/>
+                                </VerticalStackLayout>
+
+                                <!-- Sağ üst: Sil butonu -->
+                                <ImageButton Source="x.png"
+                                 BackgroundColor="Transparent"
+                                 HeightRequest="25"
+                                 WidthRequest="25"
+                                 CommandParameter="{Binding .}"
+                                 Clicked="TekilSilTiklandi"
+                                 HorizontalOptions="End"
+                                 VerticalOptions="Start"
+                                 Margin="0"
+                                 Grid.Column="2"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmDiziTakip.KullaniciMainPage"
+             Title="Kullanıcı Paneli"
+             BackgroundColor="#FFF8E7">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Şifre Değiştir" Priority="0" Order="Primary" Clicked="SifreDegistir_Clicked" />
+        <ToolbarItem Text="Hesaptan Çıkış Yap" Priority="0" Order="Primary" Clicked="CikisYap"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Başlık -->
+            <Label Text="🎬 Hoş Geldiniz"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   TextColor="#2C3E50"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center" />
+
+            <!-- Kategori Başlığı -->
+            <Frame x:Name="kategoriBaslikFrame"
+                   BackgroundColor="#2C3E50"
+                   CornerRadius="12"
+                   Padding="12"
+                   IsVisible="False"
+                   HasShadow="True">
+                <Label Text="Kategoriler"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center" />
+            </Frame>
+
+           
+
+            <!-- Kategori Seçim Listesi -->
+            <CollectionView x:Name="kategoriListView"
+                            SelectionMode="Single"
+                            SelectionChanged="KategoriSecildi"
+                            HeightRequest="200"
+                            IsVisible="False">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="White"
+                               CornerRadius="12"
+                               Padding="15"
+                               Margin="5"
+                               BorderColor="#2C3E50"
+                               HasShadow="True">
+                            <Label Text="{Binding Ad}"
+                                   FontSize="16"
+                                   TextColor="#2C3E50"
+                                   FontAttributes="Bold" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Butonlar -->
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="🔍 Film/Dizi Ara"
+                        x:Name="filmAraBtn"
+                        Clicked="FilmAraBtn_Clicked"
+                        BackgroundColor="#2C3E50"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Padding="10,5"
+                        FontAttributes="Bold"
+                        WidthRequest="160" />
+
+                <Button Text="📂 Kategoriler"
+                        x:Name="kategoriGosterBtn"
+                        Clicked="KategoriListele"
+                        BackgroundColor="#2C3E50"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Padding="10,5"
+                        FontAttributes="Bold"
+                        WidthRequest="160" />
+                <!-- Yeni İzleme Geçmişi Butonu -->
+                <Button Text="📜 İzleme Geçmişi"
+                        x:Name="gecmisBtn"
+                        Clicked="IzlemeGecmisi_Clicked"
+                        BackgroundColor="#2C3E50"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Padding="10,5"
+                        FontAttributes="Bold"
+                        WidthRequest="160" />
+            
+            </HorizontalStackLayout>
+
+            <!-- Gruplu Film/Dizi Listesi -->
+            <CollectionView x:Name="kategoriGrupluListView"
+                            ItemsSource="{Binding FilmDiziGruplari}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Spacing="10">
+                            <!-- Grup Başlığı -->
+                            <Label Text="{Binding GrupAdi}"
+                                   FontAttributes="Bold"
+                                   FontSize="22"
+                                   TextColor="#2C3E50"
+                                   Margin="5,15,0,5" />
+
+                            <!-- Alt kategori listesi -->
+                            <CollectionView ItemsSource="{Binding Kategoriler}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Spacing="8">
+                                            <!-- Kategori Adı -->
+                                            <Label Text="{Binding KategoriAdi}"
+                                                   FontAttributes="Bold"
+                                                   FontSize="18"
+                                                   TextColor="#2C3E50"
+                                                   Margin="10,5,0,5"/>
+                                            <!-- Filmler (yatay) -->
+                                            <CollectionView ItemsSource="{Binding Filmler}"
+                                                HeightRequest="240"
+                                                Margin="0,0,0,10"
+                                                SelectionMode="Single"
+                                                SelectionChanged="FilmDiziSecildi">
+                                                <CollectionView.ItemsLayout>
+                                                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                                                </CollectionView.ItemsLayout>
+
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackLayout Margin="10,5"
+                                                        WidthRequest="140"
+                                                        HorizontalOptions="Center">
+                                                            <!-- Görsel -->
+                                                            <Image Source="{Binding ImageUrl}"
+                                                                Aspect="AspectFill"
+                                                                HeightRequest="180"
+                                                                WidthRequest="140"
+                                                                HorizontalOptions="Center"
+                                                                VerticalOptions="Start"
+                                                                BackgroundColor="LightGray" />
+
+                                                            <!-- İsim -->
+                                                            <Label Text="{Binding Ad}"
+                                                               FontSize="14"
+                                                               HorizontalTextAlignment="Center"
+                                                               TextColor="#2C3E50"
+                                                               LineBreakMode="WordWrap"
+                                                               MaxLines="2"
+                                                               HeightRequest="35"
+                                                               Margin="0,5,0,0" />
+                                                        </StackLayout>
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
+                                          </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+           
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

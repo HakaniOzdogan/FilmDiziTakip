@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmDiziTakip.KullaniciTakibiPage"
+             Title="Kullanıcı Takibi"
+             BackgroundColor="#FFF8E7">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <Label Text="Kullanıcı Adı"
+                   TextColor="#001F54"
+                   FontAttributes="Bold"
+                   FontSize="16"/>
+
+            <Entry x:Name="txtKullaniciAdi"
+                   Placeholder="Kullanıcı adı girin"
+                   BackgroundColor="White"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"
+                   HeightRequest="45"/>
+
+            <Label Text="Şifre"
+                   TextColor="#001F54"
+                   FontAttributes="Bold"
+                   FontSize="16"/>
+
+            <!-- Şifre alanı ve göster/gizle butonu -->
+            <HorizontalStackLayout>
+                <Entry x:Name="txtSifre"
+                       Placeholder="Şifre girin"
+                       IsPassword="True"
+                       BackgroundColor="White"
+                       TextColor="Black"
+                       PlaceholderColor="Gray"
+                       HeightRequest="45"
+                       HorizontalOptions="FillAndExpand"/>
+                <ImageButton x:Name="btnSifreGoster"
+                             Source="eye.png" 
+                             BackgroundColor="Transparent"
+                             WidthRequest="40"
+                             HeightRequest="40"
+                             Clicked="btnSifreGoster_Clicked"/>
+            </HorizontalStackLayout>
+
+            <Label Text="Oluşturulma Tarihi"
+                   TextColor="#001F54"
+                   FontAttributes="Bold"
+                   FontSize="16"/>
+
+            <DatePicker x:Name="dateOlusturulma"
+                        TextColor="#001F54"
+                        BackgroundColor="White"
+                        HeightRequest="45"/>
+
+            <HorizontalStackLayout Spacing="15">
+                <Button Text="Ekle"
+                        Clicked="BtnKullaniciEkle_Clicked"
+                        BackgroundColor="#001F54"
+                        TextColor="White"
+                        WidthRequest="150"/>
+                <Button Text="Güncelle"
+                        Clicked="BtnKullaniciGuncelle_Clicked"
+                        BackgroundColor="#001F54"
+                        TextColor="White"
+                        WidthRequest="150"/>
+                <Button Text="Temizle"
+                        Clicked="BtnKullaniciTemizle_Clicked"
+                        BackgroundColor="#001F54"
+                        TextColor="White"
+                        WidthRequest="150"/>
+            </HorizontalStackLayout>
+
+            <Label Text="Kullanıcı Listesi"
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   Margin="0,20,0,0"
+                   TextColor="#001F54" />
+
+            <CollectionView x:Name="kullaniciListesiView"
+                            SelectionMode="Single"
+                            SelectionChanged="kullaniciListesiView_SelectionChanged"
+                            ItemsSource="{Binding}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="#001F54"
+                               CornerRadius="12"
+                               Padding="15"
+                               Margin="0,5"
+                               HasShadow="True"
+                               BackgroundColor="White">
+                            <Grid ColumnDefinitions="*,Auto"
+                                  RowDefinitions="Auto">
+                                <StackLayout>
+                                    <Label Text="{Binding KullaniciAdi}"
+                                           FontAttributes="Bold"
+                                           FontSize="16"
+                                           TextColor="#001F54"/>
+                                    <Label Text="{Binding OlusturulmaTarihi, StringFormat='Tarih: {0:dd.MM.yyyy}'}"
+                                           FontSize="13"
+                                           TextColor="Gray"/>
+                                </StackLayout>
+
+                                <ImageButton Source="x.png"
+                                             Grid.Column="1"
+                                             WidthRequest="30"
+                                             HeightRequest="30"
+                                             BackgroundColor="Transparent"
+                                             CommandParameter="{Binding .}"
+                                             Clicked="TekilSilTiklandi" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

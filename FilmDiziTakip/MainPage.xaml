@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmDiziTakip.MainPage"
+             BackgroundColor="#FFFAF0">
+
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30"
+            Spacing="16">
+
+            <Image
+                Source="logo_kesin.jpg"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="HDFilmCenneti"
+                FontSize="24"
+                TextColor="#0D1B2A"  
+                FontAttributes="Bold"
+                HorizontalOptions="Center"/>
+
+                <Label
+                Text="Kullanıcı adı giriniz"
+                TextColor="#0D1B2A"
+                FontSize="16"/>
+
+                <Entry
+                x:Name="entryKullaniciAdi"
+                Placeholder="Kullanıcı adınızı girin"
+                BackgroundColor="#ECECEC"
+                TextColor="#0D1B2A"
+                PlaceholderColor="#888"
+                Margin="0,0,0,10"
+                HeightRequest="45"
+               />
+
+                <HorizontalStackLayout Spacing="10">
+                    <Entry x:Name="entrySifre"
+                       Placeholder="Şifrenizi girin"
+                       IsPassword="True"
+                       BackgroundColor="#ECECEC"
+                       TextColor="#0D1B2A"
+                       PlaceholderColor="#888"
+                       HeightRequest="45"
+                       HorizontalOptions="FillAndExpand"/>
+
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                    <CheckBox x:Name="chkSifreGoster" 
+                                CheckedChanged="chkSifreGoster_CheckedChanged"
+                                 BackgroundColor="Transparent"/>
+
+                </StackLayout>
+            </HorizontalStackLayout>
+
+                <Button
+                x:Name="GirisBtn"
+                Text="Giriş Yap"
+                Clicked="btnGiris_Clicked"
+                AutomationId="kullanici"
+                BackgroundColor="#1B263B"  
+                    TextColor="White"
+                FontAttributes="Bold"
+                HeightRequest="50"/>
+
+                    <Button
+                x:Name="KayitBtn"
+                Text="Yeni Hesap Oluştur"
+                Clicked="KayitBtn_Clicked"
+                BackgroundColor="#415A77"
+                        TextColor="White"
+                FontAttributes="Bold"
+                HeightRequest="50"/>
+
+                        <Button
+                x:Name="YoneticiGirisBtn"
+                Text="Yönetici Girişi"
+                Clicked="btnGiris_Clicked"
+                AutomationId="yonetici"
+                BackgroundColor="#778DA9"
+                TextColor="White"
+                FontAttributes="Bold"
+                HeightRequest="50"/>
+
+                        <Button 
+                x:Name="cikisBtn"
+                Text="Çıkış Yap"
+                Clicked="CikisYap"
+                BackgroundColor="#E63946"
+                TextColor="White"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                HorizontalOptions="End"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

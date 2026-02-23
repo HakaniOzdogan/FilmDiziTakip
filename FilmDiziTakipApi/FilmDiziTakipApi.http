@@ -1,0 +1,6 @@
+@FilmDiziTakipApi_HostAddress = http://localhost:5271
+//@FilmDÝziTakipApi_HostAddress = https ://localhost:7248
+GET {{FilmDiziTakipApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmDiziTakip.DiziTakibiPage"
+             Title="Dizi Takibi"
+             BackgroundColor="#FFF8E7">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Dizi Ekleme Paneli -->
+            <Frame x:Name="DiziEklePanel" IsVisible="False" BorderColor="#001F54" BackgroundColor="White" CornerRadius="12" Padding="15" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Yeni Dizi Ekle" FontAttributes="Bold" FontSize="20" TextColor="#001F54"/>
+                    <Entry x:Name="txtAd" Placeholder="Dizi Adı" BackgroundColor="White" TextColor="Black" HeightRequest="45"/>
+                    <Entry x:Name="txtAciklama" Placeholder="Açıklama" BackgroundColor="White" TextColor="Black" HeightRequest="45"/>
+                    <Entry x:Name="txtYonetmen" Placeholder="Yönetmen" BackgroundColor="White" TextColor="Black" HeightRequest="45"/>
+                    <Entry x:Name="txtPuan" Placeholder="Puan" Keyboard="Numeric" BackgroundColor="White" TextColor="Black" HeightRequest="45"/>
+                    <Entry x:Name="txtImageUrl" Placeholder="Görsel URL" BackgroundColor="White" TextColor="Black" HeightRequest="45"/>
+                    <DatePicker x:Name="dtYayinTarihi" BackgroundColor="White" TextColor="#001F54" HeightRequest="45"/>
+                    <Picker x:Name="kategoriPicker" Title="Kategori Seçin" BackgroundColor="White" TextColor="Black" HeightRequest="45"/>
+                    <Button Text="Kaydet" Clicked="DiziKaydetClicked" BackgroundColor="#001F54" TextColor="White" HeightRequest="45"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Ekle ve Listele Butonları -->
+            <HorizontalStackLayout Spacing="15">
+                <Button Text="Yeni Dizi Ekle" Clicked="YeniDiziEkleClicked" BackgroundColor="#001F54" TextColor="White" WidthRequest="160"/>
+                <Button Text="Dizileri Listele" Clicked="ListeleButton_Clicked" BackgroundColor="#001F54" TextColor="White" WidthRequest="160"/>
+            </HorizontalStackLayout>
+
+            <!-- Dizi Listeleme -->
+            <Label Text="Diziler" FontAttributes="Bold" FontSize="20" TextColor="#001F54"/>
+            <CollectionView x:Name="DiziCollectionView"
+                SelectionMode="Single"
+                SelectionChanged="DiziCollectionView_SelectionChanged"
+                ItemsLayout="VerticalGrid, 5"
+                HeightRequest="500">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame HasShadow="True"
+                   BorderColor="#CCCCCC"
+                   CornerRadius="10"
+                   Padding="5"
+                   BackgroundColor="White"
+                   Margin="5">
+                            <StackLayout Spacing="8" HorizontalOptions="Center">
+                                <Image Source="{Binding ImageUrl}"
+                           Aspect="AspectFill"
+                           HeightRequest="200"
+                           WidthRequest="140"
+                           BackgroundColor="LightGray"
+                           HorizontalOptions="Center" />
+                                <Label Text="{Binding Ad}"
+                           FontSize="14"
+                           TextColor="#2C3E50"
+                           HorizontalTextAlignment="Center"
+                           LineBreakMode="WordWrap"
+                           MaxLines="2"
+                           HeightRequest="35"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+
+            <Button Text="Diziyi Sil"
+                    BackgroundColor="DarkRed"
+                    TextColor="White"
+                    Clicked="DiziSil_Clicked"
+                    HeightRequest="45"/>
+
+            <!-- Sezonlar Bölümü -->
+            <Label Text="Sezonlar" FontAttributes="Bold" FontSize="20" TextColor="#001F54"/>
+            <CollectionView x:Name="SezonCollectionView"
+                            SelectionMode="Single"
+                            SelectionChanged="SezonCollectionView_SelectionChanged"
+                            HeightRequest="150">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="#001F54" Padding="10" CornerRadius="10" BackgroundColor="White" HasShadow="True" Margin="0,5">
+                            <Label Text="{Binding SezonNo, StringFormat='Sezon {0}'}" FontSize="14" TextColor="Black"/>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <HorizontalStackLayout Spacing="15">
+                <Button Text="Yeni Sezon Ekle" Clicked="YeniSezonEkle_Clicked" BackgroundColor="#001F54" TextColor="White" WidthRequest="160"/>
+                <Button Text="Sezonu Sil" Clicked="SezonSil_Clicked" BackgroundColor="DarkRed" TextColor="White" WidthRequest="160"/>
+            </HorizontalStackLayout>
+
+            <!-- Bölüm Ekleme Paneli -->
+            <Frame x:Name="BolumEklePanel" IsVisible="False" BorderColor="#001F54" BackgroundColor="White" CornerRadius="12" Padding="15" HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="{Binding SelectedSezonLabel}" FontAttributes="Bold" FontSize="16" TextColor="#001F54"/>
+                    <Entry x:Name="txtBolumAdi" Placeholder="Bölüm Adı" BackgroundColor="White" TextColor="Black" HeightRequest="45"/>
+                    <Entry x:Name="txtThumbnailUrl" Placeholder="Thumbnail URL" BackgroundColor="White" TextColor="Black" HeightRequest="45"/>
+                    <Button Text="Bölüm Ekle" Clicked="BolumEkle_Clicked" BackgroundColor="#001F54" TextColor="White" HeightRequest="45"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

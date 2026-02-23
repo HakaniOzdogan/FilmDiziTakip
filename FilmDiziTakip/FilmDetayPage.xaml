@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="FilmDiziTakip.FilmDetayPage"
+             >
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Hesaptan Çıkış Yap" Priority="0" Order="Primary" Clicked="CikisYap"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+    
+       
+            <!-- Film Başlık -->
+            <HorizontalStackLayout HorizontalOptions="Start" VerticalOptions="Center" Spacing="10">
+                <Label x:Name="FilmAdiLabel"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    VerticalOptions="Start" />
+
+                <HorizontalStackLayout x:Name="OrtalamaPuanPanel" 
+                           Spacing="3" 
+                           VerticalOptions="Center">
+                    <Label Text="☆" FontSize="20" TextColor="Gray" />
+                    <Label Text="☆" FontSize="20" TextColor="Gray" />
+                    <Label Text="☆" FontSize="20" TextColor="Gray" />
+                    <Label Text="☆" FontSize="20" TextColor="Gray" />
+                    <Label Text="☆" FontSize="20" TextColor="Gray" />
+                </HorizontalStackLayout>
+            </HorizontalStackLayout>
+
+
+            <toolkit:MediaElement
+            x:Name="FilmOynatici"
+            HeightRequest="500"        
+            Aspect="AspectFit"
+            />
+
+
+            <Label x:Name="FilmTuruLabel"
+               FontSize="16"
+               TextColor="Gray"
+               HorizontalOptions="Center" />
+            
+            <Label x:Name="FilmAciklamaLabel"
+                FontSize="16"
+                TextColor="LightGray"
+                HorizontalOptions="Center"
+                Margin="0,5,0,10"
+                LineBreakMode="WordWrap"/>
+
+            <HorizontalStackLayout x:Name="YildizPanel" HorizontalOptions="Center" Spacing="5">
+                
+                <!-- 1. Yıldız -->
+                <Label Text="☆" FontSize="32" ClassId="1" TextColor="Gray">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                        />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <!-- 2. Yıldız -->
+                <Label Text="☆" FontSize="32" ClassId="2" TextColor="Gray">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer  />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <!-- 3. Yıldız -->
+                <Label Text="☆" FontSize="32" ClassId="3" TextColor="Gray">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer  />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <!-- 4. Yıldız -->
+                <Label Text="☆" FontSize="32" ClassId="4" TextColor="Gray">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer  />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <!-- 5. Yıldız -->
+                <Label Text="☆" FontSize="32" ClassId="5" TextColor="Gray">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer  />
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
+            <!-- Bildirim -->
+            <Label x:Name="BildirimLabel"
+               TextColor="Green"
+               FontSize="14"
+               IsVisible="False"
+               HorizontalOptions="Center" />
+
+            <!-- Yorumlar Başlık -->
+            <Label Text="Yorumlar" FontSize="18" FontAttributes="Bold" />
+
+            <!-- Yorum Listesi -->
+            <CollectionView x:Name="YorumlarList" HeightRequest="200">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Padding="10" Spacing="5">
+                            <Label Text="{Binding KullaniciAdi}" FontSize="13" TextColor="WhiteSmoke" FontAttributes="Bold" />
+                            <Label Text="{Binding YorumMetni}" FontSize="14" />
+                            <Label Text="{Binding Puan, StringFormat='Puan: {0}/5'}" FontSize="12" TextColor="Gray" />
+                            <Label Text="{Binding Tarih}" FontSize="12" TextColor="Gray" />
+                            
+                            
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Yorum Gönder -->
+            <Editor x:Name="KullaniciYorumEditor"
+                Placeholder="Yorumunuzu buraya yazın..."
+                AutoSize="TextChanges"
+                HeightRequest="80"
+                BackgroundColor="#f2f2f2"
+                TextColor="#2C3E50"
+                Margin="0,10,0,0"/>
+
+            <Button Text="Yorumu Gönder"
+                Clicked="GonderYorumClicked"
+                BackgroundColor="#2C3E50"
+                TextColor="White" />
+
+            <!-- Benzer Filmler Başlık -->
+            <Label Text="Benzer Filmler"
+       FontSize="20"
+       FontAttributes="Bold"
+       TextColor="LightGray"
+       Margin="0,20,0,10"
+       HorizontalOptions="Start" />
+
+            <!-- Benzer Filmler Listesi -->
+            <CollectionView x:Name="BenzerFilmlerList"
+                HeightRequest="240"
+                SelectionMode="Single"
+                SelectionChanged="BenzerFilmeGit">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="5,0"
+                         WidthRequest="140"
+                         HorizontalOptions="Center">
+                            <!-- Görsel -->
+                            <Image Source="{Binding ImageUrl}"
+                       Aspect="AspectFill"
+                       HeightRequest="180"
+                       WidthRequest="140"
+                       BackgroundColor="LightGray"
+                       HorizontalOptions="Center" />
+
+                            <!-- Dizi İsmi -->
+                            <Label Text="{Binding Ad}"
+                       FontSize="14"
+                       HorizontalTextAlignment="Center"
+                       TextColor="LightGray"
+                       LineBreakMode="WordWrap"
+                       MaxLines="2"
+                       HeightRequest="35"
+                       Margin="0,5,0,0" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button
+                x:Name="btnGeriDon"
+                Text="Geri Dön"
+                Clicked="GeriDon"
+                BackgroundColor="OrangeRed"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+
+</ContentPage>

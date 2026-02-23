@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmDiziTakipApi", "FilmDiziTakipApi.csproj", "{90AAB985-44AE-4210-9B38-02C7E29B9692}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90AAB985-44AE-4210-9B38-02C7E29B9692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90AAB985-44AE-4210-9B38-02C7E29B9692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90AAB985-44AE-4210-9B38-02C7E29B9692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90AAB985-44AE-4210-9B38-02C7E29B9692}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A4EFEF7E-402B-4B44-8B0D-EE9FEAD77623}
+	EndGlobalSection
+EndGlobal

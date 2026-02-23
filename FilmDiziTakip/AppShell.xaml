@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="FilmDiziTakip.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:FilmDiziTakip"
+    Shell.FlyoutBehavior="Disabled"
+    Title="FilmDiziTakip">
+    
+    <ShellContent
+        Title="Giris"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage"
+        />
+    <ShellContent 
+        Title="Kullanıcı Ana sayfası" 
+        ContentTemplate="{DataTemplate local:KullaniciMainPage}" 
+        Route="KullaniciMainPage" />
+    <ShellContent
+        Title="Yönetici Ana Sayfası"
+        ContentTemplate="{DataTemplate local:DirectorMainPage}"
+        Route="DirectorMainPage"/>
+    <ShellContent
+        Title="Üye Ol"
+        ContentTemplate="{DataTemplate local:UyeOlPage}"
+        Route="UyeOlPage"/>
+    <ShellContent
+        Title="Kategori Detay"
+        ContentTemplate="{DataTemplate local:KategoriDetayPage}"
+        Route="KategoriDetayPage"/>
+    <ShellContent
+        Title="Film Detay"
+        ContentTemplate="{DataTemplate local:FilmDetayPage}"
+        Route="FilmDetayPage"/>
+    <ShellContent
+        Title="Dizi Detay"
+        ContentTemplate="{DataTemplate local:DiziDetayPage}"
+        Route="DiziDetayPage"/>
+    <ShellContent
+        Title="Film Dizi Arama"
+        ContentTemplate="{DataTemplate local:FilmDiziAramaPage}"
+        Route="FilmDiziAramaPage"/>
+    <ShellContent
+        Title="Film Takibi"
+        ContentTemplate="{DataTemplate local:FilmTakibiPage}"
+        Route="FilmTakibiPage"/>
+    <ShellContent
+        Title="Dizi Bölüm Detay Sayfası"
+        ContentTemplate="{DataTemplate local:BolumDetayPage}"
+        Route="BolumDetayPage"/>
+    <ShellContent
+        Title="Sifre Degistirme Sayfası"
+        ContentTemplate="{DataTemplate local:SifreDegistirPage}"
+        Route="SifreDegistirPage"/>
+
+</Shell>

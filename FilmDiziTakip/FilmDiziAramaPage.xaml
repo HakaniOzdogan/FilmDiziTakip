@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmDiziTakip.FilmDiziAramaPage"
+             Title="Film Dizi Ara"
+             BackgroundColor="#FFF8E7">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Hesaptan Çıkış Yap" Priority="0" Order="Primary" Clicked="CikisYap"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Arama Girişi -->
+            <Entry x:Name="aramaEntry"
+                   Placeholder="🎬 Film veya Dizi adı yazın..."
+                   FontSize="18"
+                   TextColor="#2C3E50"
+                   BackgroundColor="White"
+                   HeightRequest="50"/>
+
+            <!-- Ara Butonu -->
+            <Button Text="🔍 Ara"
+                    BackgroundColor="#2C3E50"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    Clicked="AraBtn_Clicked"
+                    Padding="10"/>
+
+            <!-- Sonuç Listesi -->
+            <CollectionView x:Name="filmlerdizilerListView"
+                            SelectionMode="Single"
+                            SelectionChanged="FilmDiziSecildi"
+                            EmptyView="Sonuç bulunamadı."
+                            ItemsLayout="VerticalGrid, 5">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10" Spacing="8"  >
+                            <Image Source="{Binding ImageUrl}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="200"
+                                   WidthRequest="140"
+                                   HorizontalOptions="Center"
+                                   BackgroundColor="LightGray"/>
+                            <Label Text="{Binding Ad}"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#2C3E50"
+                                   HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding Puan}"
+                                   FontSize="14"
+                                   TextColor="#555"
+                                   HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Geri Dön -->
+            <Button Text="↩ Geri Dön"
+                    x:Name="AraCikisBtn"
+                    Clicked="GeriDon"
+                    BackgroundColor="#2C3E50"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    Padding="10,5"
+                    HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

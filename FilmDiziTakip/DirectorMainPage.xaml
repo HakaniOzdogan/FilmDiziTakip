@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FilmDiziTakip.DirectorMainPage"
+             Title="Yönetim Paneli"
+             BackgroundColor="#FFF8E7">
+
+    <VerticalStackLayout Padding="30"
+                         Spacing="25"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center">
+
+        <Label Text="🎬 Yönetim Paneli"
+               FontSize="28"
+               FontAttributes="Bold"
+               TextColor="#001F54"
+               HorizontalOptions="Center"/>
+
+        <Button Text="📂 Film Takibi"
+                FontSize="18"
+                BackgroundColor="#001F54"
+                TextColor="White"
+                WidthRequest="220"
+                HeightRequest="50"
+                Clicked="BtnFilmTakibi_Clicked"/>
+
+        <Button Text="🎬 Dizi Takibi"
+                FontSize="18"
+                BackgroundColor="#001F54"
+                TextColor="White"
+                WidthRequest="220"
+                HeightRequest="50"
+                Clicked="BtnDiziTakibi_Clicked"/>
+
+        <Button Text="👤 Kullanıcı Takibi"
+                FontSize="18"
+                BackgroundColor="#001F54"
+                TextColor="White"
+                WidthRequest="220"
+                HeightRequest="50"
+                Clicked="BtnKullaniciTakibi_Clicked"/>
+
+        <Button Text="↩ Geri Dön"
+                FontSize="18"
+                BackgroundColor="OrangeRed"
+                TextColor="White"
+                WidthRequest="220"
+                HeightRequest="50"
+                Clicked="BtnGeri_Clicked"/>
+
+    </VerticalStackLayout>
+</ContentPage>
